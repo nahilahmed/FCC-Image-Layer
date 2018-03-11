@@ -3,7 +3,6 @@ var app = express();
 var bodyParser = require('body-parser');
 var cors = require('cors');
 var mongoose = require('mongoose');
-//var Bing = require('node-bing-api')({acckey:'a5ef47c5e08c4546a06b91e72c0941d6'});
 var searchTerm = require('./models/searchTerm.js')
 var google_cx='004428927283651543213:vmmx57sovda';
 var google_key= 'AIzaSyAXjTCbPFydRwU2_ym9WDsfD9uzWpg6zhg';
@@ -53,11 +52,7 @@ app.get('/api/imagesearch/:searchVal*',function(req,res){
           })
           res.json(arr);
      })
-  // Bing.images(searchVal,{
-  //    count:10
-  //  },(err,rez,body) =>{
-  //      res.json(body);
-  //  })
+
 
 });
 
