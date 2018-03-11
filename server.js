@@ -1,6 +1,7 @@
 var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
+var path = require('path');
 var cors = require('cors');
 var mongoose = require('mongoose');
 var searchTerm = require('./models/searchTerm.js')
@@ -10,7 +11,16 @@ var request = require("request");
 
 app.use(bodyParser.json());
 app.use(cors());
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'jade');
+app.use(express.static(path.join(__dirname, '/public')));
+
+app.get('/', function(req, res, next) {
+  res.render('index');
+});
+
 mongoose.connect("mongodb://localhost:27017/searchTerms");
+
 
 app.get('/api/recentsearch',function(req,res){
 
